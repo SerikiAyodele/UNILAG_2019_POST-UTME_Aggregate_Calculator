@@ -3,8 +3,39 @@ import java.util.Scanner;
 
 public class AggregateCalculator {
     
-    private static float getAggregate(){
+    private static float getAggregate(int jambScore, int postUTMEScore, String[] gradeL){
         float aggregate = 0;
+        
+        float [] gradeN = new float[5];
+        
+        float oLevels = 0;
+        
+        for (int i = 0; i < gradeL.length; i++){
+            switch (gradeL[i]){
+                case "A1":
+                    gradeN[i] = (float)4.0;
+                    break;
+                case "B2":
+                    gradeN[i] = (float)3.6;
+                    break;
+                case "B3":
+                    gradeN[i] = (float)3.2;
+                    break;
+                case "C4":
+                    gradeN[i] = (float)2.8;
+                    break;
+                case "C5":
+                    gradeN[i] = (float)2.4;
+                    break;
+                case "C6":
+                    gradeN[i] = (float)2.0;
+                default:
+                    gradeN[i] = (float)0.0;
+                    break;
+            }
+            
+            oLevels += gradeN[i];
+        }
         
         return aggregate;
     }
@@ -19,8 +50,8 @@ public class AggregateCalculator {
         
         int jambScore;
         int postUTMEScore;
-        char [] gradeL = new char[5];
-        char [] gradeN = new char[5];
+        String [] gradeL = new String[5];
+        
         
         float aggregate;
         
@@ -44,10 +75,10 @@ public class AggregateCalculator {
         
         for (int i = 0; i < subjects.length; i++){
             System.out.print(subjects[i] + ": ");
-            gradeL[i] = input.nextLine().charAt(0);
+            gradeL[i] = input.nextLine().toUpperCase();
         }
         
-        aggregate = getAggregate();
+        aggregate = getAggregate(jambScore, postUTMEScore, gradeL);
 
     }
     
