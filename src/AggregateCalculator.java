@@ -73,7 +73,7 @@ public class AggregateCalculator {
         
         System.out.print("Mia: Hello " + name + "! My name is Mia\n");
         
-        System.out.print("Mia: What's your favourite meal? "); 
+        System.out.print("\nMia: What's your favourite meal? "); 
         food = input.nextLine().toLowerCase();
         
         System.out.print("Mia: Mmmmm I love " + food + " as well :)\n");
