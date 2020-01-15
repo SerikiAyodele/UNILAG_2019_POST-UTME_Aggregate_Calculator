@@ -1,20 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.util.Scanner;
 
-/**
- *
- * @author Emeka
- */
+
 public class AggregateCalculator {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner input = new Scanner(System.in);
+        
+        String name, food;
+        
+        System.out.print("Mia: Hi there. What's your name?");
+        name = input.nextLine();
+        
+        System.out.print("Mia: Hello " + name + "! My name is Mian\n");
+        
+        System.out.print("Mia: What's your favourite meal?"); 
+        food = input.nextLine();
+        
+        System.out.print("Mia: Mmmmm I love " + food + " as well :)\n");
     }
     
 }
