@@ -6,6 +6,8 @@ public class AggregateCalculator {
     private static float getAggregate(int jambScore, int postUTMEScore, String[] gradeL){
         float aggregate = 0;
         
+        float scaledJambScore;
+        
         float [] gradeN = new float[5];
         
         float oLevels = 0;
@@ -34,8 +36,19 @@ public class AggregateCalculator {
                     break;
             }
             
+            
+            
             oLevels += gradeN[i];
         }
+        
+        scaledJambScore = ((float)jambScore/400)*50;
+        
+        aggregate = scaledJambScore + postUTMEScore + oLevels;
+        
+        //Let's convert it to 2 decimal places.. Shall we.. Old school style
+        aggregate *= 100;
+        aggregate = (float)Math.floor(aggregate);
+        aggregate /= 100;
         
         return aggregate;
     }
@@ -55,13 +68,13 @@ public class AggregateCalculator {
         
         float aggregate;
         
-        System.out.print("Mia: Hi there. What's your name?");
+        System.out.print("Mia: Hi there. What's your name? ");
         name = input.nextLine();
         
-        System.out.print("Mia: Hello " + name + "! My name is Mian\n");
+        System.out.print("Mia: Hello " + name + "! My name is Mia\n");
         
-        System.out.print("Mia: What's your favourite meal?"); 
-        food = input.nextLine();
+        System.out.print("Mia: What's your favourite meal? "); 
+        food = input.nextLine().toLowerCase();
         
         System.out.print("Mia: Mmmmm I love " + food + " as well :)\n");
         
@@ -73,13 +86,17 @@ public class AggregateCalculator {
         System.out.println("\n\nPost-UTME test score: ");
         postUTMEScore = input.nextInt();
         
+        System.out.println("Mia: Now let me know your O'level grades\n");
+        
+        Scanner s = new Scanner(System.in);
+        
         for (int i = 0; i < subjects.length; i++){
             System.out.print(subjects[i] + ": ");
-            gradeL[i] = input.nextLine().toUpperCase();
+            gradeL[i] = s.nextLine().toUpperCase();
         }
         
         aggregate = getAggregate(jambScore, postUTMEScore, gradeL);
 
+        System.out.println("Mia: Your aggregate score is " + aggregate + "%");
     }
-    
 }
